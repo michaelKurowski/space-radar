@@ -18,5 +18,10 @@
   "homepage": "https://github.com/michaelKurowski/space-radar#readme",
   "devDependencies": {
     "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "ts-loader": "^4.5.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
   }
 }
