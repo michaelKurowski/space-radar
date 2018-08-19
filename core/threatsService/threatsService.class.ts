@@ -5,8 +5,9 @@ class ThreatsService {
     constructor() {
 
     }
-
+    /*
     getThreats(options: QueryOptions): Observable<Threat[]> {
     }
+    */
 }
 export default ThreatsService
