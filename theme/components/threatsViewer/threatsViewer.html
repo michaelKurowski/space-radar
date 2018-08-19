@@ -4,16 +4,19 @@
         <th scope='col'>#</th>
         <th scope='col'>Name</th>
         <th scope='col'>When will hit</th>
-        <th scope='col'>Danger</th>
-        <th scope='col'>Type</th>
+        <th scope='col'>Status</th>
     </thead>
     <tbody>
         <tr ng-repeat='thr in $ctrl.threats'>
             <th scope='row'>{{$index}}</th>
             <td>Some object</td>
             <td>Maybe today, maybe never</td>
-            <td>{{thr.size}}</td>
-            <td><i class="fas fa-certificate"></i></td>
+            <td>
+                <i ng-if='thr.getDangerLevel() === 0' class='fas fa-skull text-danger' title='Severe'></i>
+                <i ng-if='thr.getDangerLevel() === 1' class='fas fa-sad-tear text-warning' title='Serious'></i>
+                <i ng-if='thr.getDangerLevel() === 2' class='fas fa-frown-open text-dark' title='Mild'></i>
+                <i ng-if='thr.getDangerLevel() === 3' class='fas fa-feather-alt text-info' title='Light'></i>
+            </td>
         </tr>
     </tbody>
 
