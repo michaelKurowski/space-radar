@@ -7,18 +7,16 @@ class ApiConnector {
     private optionsToParamsMap: Map<String, String>
    
     constructor(){ 
+        this.optionsToParamsMap = new Map<String, String>()
     }
 
-    constructRequestURL(requestParameters: RequestParameters): URL {
-        /*
-        {
-            date-min: 30000,
-            date-max: 2000,
-            dupa: 'dupa123'
-        }
-        */
+    private constructRequestURL(requestParameters: RequestParameters): URL {
         var urlWithParameters = this.BASE_API_URL + requestParameters
         return new URL('aaa')
+    }
+
+    private generateParametersFromQueryOptions(queryOptions: QueryOptions) {
+        
     }
 
     getThreats(queryOptions: QueryOptions) {
