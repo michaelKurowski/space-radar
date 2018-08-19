@@ -1,13 +1,15 @@
 import RequestParameters from './requestParameters.interface'
 import QueryOptions from './queryOptions.interface'
-
+import './QueryOptionsToParameters.map'
+import QueryOptionsToParametersMap from './QueryOptionsToParameters.map'
+import {forOwn} from 'lodash'
 class ApiConnector {
 
     private BASE_API_URL = 'https://ssd-api.jpl.nasa.gov/cad.api'
     private optionsToParamsMap: Map<String, String>
    
     constructor(){ 
-        this.optionsToParamsMap = new Map<String, String>()
+        this.optionsToParamsMap = QueryOptionsToParametersMap
     }
 
     private constructRequestURL(requestParameters: RequestParameters): URL {
@@ -15,12 +17,20 @@ class ApiConnector {
         return new URL('aaa')
     }
 
-    private generateParametersFromQueryOptions(queryOptions: QueryOptions) {
-        
+    private serializeParametersFromQueryOptions(queryOptions: QueryOptions): String {
+        let serializedParameters:String = ''
+
+        console.log(this.optionsToParamsMap)
+        forOwn(queryOptions, (value, key) => {
+            
+        })
+
+        console.log(serializedParameters)
+        return serializedParameters
     }
 
     getThreats(queryOptions: QueryOptions) {
-
+         this.serializeParametersFromQueryOptions(queryOptions)
     }
 }
 
