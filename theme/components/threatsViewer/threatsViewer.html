@@ -1,1 +1,20 @@
-<h1>Threats viewer</h1>
+<h2>Threats forecast</h2>
+<table class='table table-striped'>
+    <thead class='thead-dark '>
+        <th scope='col'>#</th>
+        <th scope='col'>Name</th>
+        <th scope='col'>When will hit</th>
+        <th scope='col'>Danger</th>
+        <th scope='col'>Type</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat='thr in $ctrl.threats'>
+            <th scope='row'>{{$index}}</th>
+            <td>Some object</td>
+            <td>Maybe today, maybe never</td>
+            <td>{{thr.size}}</td>
+            <td><i class="fas fa-certificate"></i></td>
+        </tr>
+    </tbody>
+
+</table>
