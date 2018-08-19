@@ -1,0 +1,22 @@
+{
+  "name": "space-radar",
+  "version": "1.0.0",
+  "description": "Detect close asteroid approaches to Earth",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelKurowski/space-radar.git"
+  },
+  "author": "Michael Kurowski & Marcin Grzeszczak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelKurowski/space-radar/issues"
+  },
+  "homepage": "https://github.com/michaelKurowski/space-radar#readme",
+  "devDependencies": {
+    "typescript": "^3.0.1"
+  }
+}
