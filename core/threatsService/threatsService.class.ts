@@ -5,6 +5,10 @@ class ThreatsService {
 
     }
 
+    private queryOptionsToParameters(options: QueryOptions) {
+
+    }
+
     getThreats(options: QueryOptions) {
 
     }

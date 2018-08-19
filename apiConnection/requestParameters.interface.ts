@@ -1,4 +1,4 @@
-interface RequestParametersIterface {
+export default interface RequestParameters {
     'date-min'?: string
     'date-max'?: string
     'dist-min'?: string

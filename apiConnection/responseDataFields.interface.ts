@@ -1,6 +1,6 @@
-export interface ResponseDataFields {
+export default interface ResponseDataFields {
     'des'?: string
-    'orbit_id'?: number
+    'orbit_id'?: Number
     'jd'?:string
     'cd'?:string
     'dist'?:number
