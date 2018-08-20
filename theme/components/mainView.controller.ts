@@ -17,7 +17,7 @@ class MainView {
     }
 
     updateThreats(dangerLevel: DangerLevels = DangerLevels.Severe, daysToHit: number = 30) {
-        this.threatsService.getThreats(dangerLevel, 'Earth', daysToHit)
+        this.threatsService.getThreats(daysToHit, 'Earth', dangerLevel)
             .subscribe((threats: Threat[]) => {
                 this.$timeout(() => {
                     this.threats = threats

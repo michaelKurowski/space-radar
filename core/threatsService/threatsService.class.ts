@@ -1,6 +1,7 @@
 import QueryOptions from '../../apiConnection/queryOptions.interface'
 import Threat from './threat.class'
 import {Observable, Observer} from 'rxjs'
+import DangerLevel from './dangerLevels.enum'
 class ThreatsService {
 
     private threatsMocks = [
@@ -21,7 +22,8 @@ class ThreatsService {
 
     }
 
-    getThreats(days:number, body:string, dangerLevel: number): Observable<Threat[]> {
+    getThreats(days:number, body:string, dangerLevel: DangerLevel): Observable<Threat[]> {
+        console.log(days, body, dangerLevel)
         return Observable.create((observer: Observer<Threat[]>) => {
             observer.next(this.threatsMocks)
         } )
