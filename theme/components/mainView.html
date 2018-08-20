@@ -1,9 +1,4 @@
-<div class='border bg-light'>
-    <h1 class='text-center display-1'>
-        <i class='fas fa-eye' title='Severe'></i>
-    </h1>
-    <h2 class='text-center'>Space radar</h2>
-        
-    <options-setter></options-setter>
+<div class='border bg-light p-2 m-1'>
+    <options-setter submit-callback='ctrl.bindedFilter'></options-setter>
     <threats-viewer threats='ctrl.threats'></threats-viewer>
 </div>

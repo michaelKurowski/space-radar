@@ -1,30 +1,32 @@
 import ThreatsService from '../../core/threatsService/threatsService.class'
 import Threat from '../../core/threatsService/threat.class'
+import DangerLevels from '../../core/threatsService/dangerLevels.enum'
 class MainView {
     public x: number
     private threatsService: ThreatsService
     private $timeout: ng.ITimeoutService
     public threats: Threat[]
-    public viewer: number[]
+    public bindedFilter: Function
     constructor(threatsService: ThreatsService, $timeout: ng.ITimeoutService) {
         this.x = 2
         this.$timeout = $timeout
         this.threatsService = threatsService
         this.threats = []
-        this.viewer = []
+        this.bindedFilter = this.filter.bind(this)
         this.updateThreats()
     }
 
-    updateThreats() {
-        console.log('updateThreats')
-        this.threatsService.getThreats(0, 'Earth', 2)
+    updateThreats(dangerLevel: DangerLevels = DangerLevels.Severe, daysToHit: number = 30) {
+        this.threatsService.getThreats(dangerLevel, 'Earth', daysToHit)
             .subscribe((threats: Threat[]) => {
                 this.$timeout(() => {
                     this.threats = threats
-                    this.viewer = threats.map((thr: Threat) => thr.getSize())
-                    console.log(threats, this.viewer)
                 })
             })
+    }
+
+    filter(dangerLevel: DangerLevels, daysToHit: number) {
+        this.updateThreats(dangerLevel, daysToHit)
     }
 }
 
