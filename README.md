@@ -1,3 +1,5 @@
+# About
+Finds potential danmgerous celestial objects that may hit Earth
 # Starting dev mode
 Run `npm run run:dev` to start a development mode
 # Running E2E tests
