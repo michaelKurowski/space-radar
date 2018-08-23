@@ -1,4 +1,4 @@
-<h2>Threats forecast</h2>
+<h2 data-selenium='threats-forecast-title'>Threats forecast</h2>
 <table class='table table-striped'>
     <thead class='thead-dark '>
         <th scope='col'>#</th>
@@ -6,7 +6,7 @@
         <th scope='col'>When will hit</th>
         <th scope='col'>Status</th>
     </thead>
-    <tbody>
+    <tbody data-selenium='threats-viewer-list'>
         <tr ng-repeat='thr in $ctrl.threats'>
             <th scope='row'>{{$index}}</th>
             <td>Some object</td>

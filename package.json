@@ -4,7 +4,8 @@
   "description": "Detect close asteroid approaches to Earth",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx protractor ./protractor.conf.js",
+    "run:selenium": "npx webdriver-manager start",
     "run:dev": " npx webpack-dev-server"
   },
   "repository": {
@@ -33,6 +34,7 @@
     "html-webpack-plugin": "^3.2.0",
     "lodash": "^4.17.10",
     "node-sass": "^4.9.3",
+    "protractor": "^5.4.0",
     "rxjs": "^6.2.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.22.1",
