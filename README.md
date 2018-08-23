@@ -1,5 +1,7 @@
 # About
-Finds potential danmgerous celestial objects that may hit Earth
+Mini project to play with some things.
+
+Finds potential danmgerous celestial objects that may hit Earth via NASA API.
 # Starting dev mode
 Run `npm run run:dev` to start a development mode
 # Running E2E tests
