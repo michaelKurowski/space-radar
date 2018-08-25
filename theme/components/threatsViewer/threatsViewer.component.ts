@@ -1,4 +1,7 @@
 import threatsViewerTemplate from './threatsViewer.html'
 export default {
-    template: threatsViewerTemplate
+    template: threatsViewerTemplate,
+    bindings: {
+        threats: '<'
+    }
 }

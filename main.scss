@@ -1,2 +1,10 @@
+$theme-colors: (
+  "primary": #08081b,
+);
+
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'theme/components/mainView';
+
+body {
+    background-color: #08081b
+}

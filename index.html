@@ -1,9 +1,14 @@
 <head>
     <title>Space Radar</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <script src='bundle.js'></script>
 </head>
 <body ng-app='app'>
-    <div ng-controller='mainController'>
+    <div ng-controller='mainController' class='container-fluid'>
+            <h1 class='text-center display-1 text-white'>
+                <i class='fas fa-eye' title='Severe'></i>
+            </h1>
+            <h2 class='text-center text-white'>Space radar</h2>
         <main-view></main-view>
     </div>
 </body>

@@ -1,3 +1,4 @@
-{{ctrl.x}}
-<options-setter></options-setter>
-<threats-viewer></threats-viewer>
+<div class='border bg-light p-2 m-1'>
+    <options-setter submit-callback='ctrl.bindedFilter'></options-setter>
+    <threats-viewer threats='ctrl.threats'></threats-viewer>
+</div>
