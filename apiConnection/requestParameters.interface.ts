@@ -1,6 +1,6 @@
 export default interface RequestParameters {
-    'date-min'?: Date
-    'date-max'?: Date
+    'date-min'?: string
+    'date-max'?: string
     'dist-min'?: string
     'dist-max'?: string
     'h-min'?: number
