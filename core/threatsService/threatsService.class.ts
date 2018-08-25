@@ -6,13 +6,13 @@ import moment from 'moment'
 class ThreatsService {
     private apiConnector: ApiConnector
     private threatsMocks = [
-        new Threat(30,new Date(), new Date(), 3),
-        new Threat(12,new Date(), new Date(), 1),
-        new Threat(5,new Date(), new Date(), 0),
-        new Threat(54,new Date(), new Date(), 1),
-        new Threat(10,new Date(), new Date(), 3),
-        new Threat(9,new Date(), new Date(), 1),
-        new Threat(2,new Date(), new Date(), 0),
+        new Threat(new Date(), new Date(), 3),
+        new Threat(new Date(), new Date(), 1),
+        new Threat(new Date(), new Date(), 0),
+        new Threat(new Date(), new Date(), 1),
+        new Threat(new Date(), new Date(), 3),
+        new Threat(new Date(), new Date(), 1),
+        new Threat(new Date(), new Date(), 0),
     ]
 
     constructor() {
@@ -29,10 +29,11 @@ class ThreatsService {
             body
         }
 
-        this.apiConnector.getThreats(queryOptions)
+        const receivedThreats = this.apiConnector.getThreats(queryOptions)
 
+        const listOfThreats:Threat[] = []
         return Observable.create((observer: Observer<Threat[]>) => {
-            observer.next(this.threatsMocks)
+            observer.next(listOfThreats)
         } )
     }
 }
