@@ -11,7 +11,7 @@ class DatesParser {
         const daysAmount = DatesParser.howManyDaysInSigma(sigma)
         const hours = DatesParser.getHoursFromSigma(sigma)
         const minutes = DatesParser.getMinutesFromSigma(sigma)
-        return moment(UNIX_ZERO_TIME).date(daysAmount).hours(hours).minutes(minutes)
+        return moment(UNIX_ZERO_TIME).add(daysAmount, 'days').add(hours, 'hours').add(minutes, 'minutes')
     }
 
     static approachDateParser(date: string) {
