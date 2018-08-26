@@ -14,8 +14,8 @@ class DatesParser {
         return moment(UNIX_ZERO_TIME).add(daysAmount, 'days').add(hours, 'hours').add(minutes, 'minutes')
     }
 
-    static approachDateParser(date: string) {
-
+    static parseApproachDate(date: string) {
+        return moment.utc(date)
     }
 
     private static isSigmaNeglectible(sigma: string) {
