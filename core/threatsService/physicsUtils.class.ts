@@ -1,4 +1,5 @@
 import * as units from './units.interface'
+import Visibility from './visibility.enum'
 class PhysicsUtils {
     static calculateApparentMagnitude(absoluteMagnitude: number, distance: units.parsecs) {
         const logPart = Math.log(distance) / Math.LN10
@@ -19,6 +20,13 @@ class PhysicsUtils {
 
     static createAU(amount: number) : units.astronomicalUnits {
         return amount as units.astronomicalUnits
+    }
+
+    static getVisibilityLevel(apparentMagnitude: number) {
+        if (apparentMagnitude < 6.5) return Visibility.EYE
+        if (apparentMagnitude < 10) return Visibility.BINOCULARS
+        if (apparentMagnitude < 15) return Visibility.TELESCOPE
+        return Visibility.HEAVY_APARATURE
     }
 }
 

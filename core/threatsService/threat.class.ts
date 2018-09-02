@@ -11,6 +11,10 @@ class Threat {
         this.dangerLevel = dangerLevel
     }
 
+    getVisibility() {
+        return this.visibility
+    }
+
     getDangerLevel() {
         return this.dangerLevel
     }
