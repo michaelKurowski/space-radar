@@ -4,6 +4,7 @@ import {Observable, Observer} from 'rxjs'
 import ApiConnector from '../../apiConnection/apiConnector.class'
 import moment from 'moment'
 class ThreatsService {
+    private DATE_FORMAT:string = 'YYYY-MM-DD'
     private apiConnector: ApiConnector
     private threatsMocks = [
         new Threat(new Date(), new Date(), 3),
@@ -21,10 +22,11 @@ class ThreatsService {
 
 
     getThreats(days:number, body:string, dangerLevel: number): Observable<Threat[]> {
-        const actualDate = moment().format('YYYY-MM-DD') 
+        const dateFrom = moment().format(this.DATE_FORMAT) 
+        const dateTo = moment().add(days,'days').format(this.DATE_FORMAT)
         const queryOptions: QueryOptions = {
-            dateFrom: actualDate,
-            dateTo: actualDate,
+            dateFrom,
+            dateTo,
             distanceMin: dangerLevel.toString(),
             body
         }
