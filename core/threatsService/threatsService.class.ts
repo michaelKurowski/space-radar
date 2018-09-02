@@ -21,21 +21,19 @@ class ThreatsService {
     }
 
 
-    getThreats(days:number, body:string, dangerLevel: number): Observable<Threat[]> {
+    getThreats(days:number): Observable<Threat[]> {
         const dateFrom = moment().format(this.DATE_FORMAT) 
         const dateTo = moment().add(days,'days').format(this.DATE_FORMAT)
         const queryOptions: QueryOptions = {
             dateFrom,
-            dateTo,
-            distanceMin: dangerLevel.toString(),
-            body
+            dateTo
         }
 
         const receivedThreats = this.apiConnector.getThreats(queryOptions)
 
         const listOfThreats:Threat[] = []
         return Observable.create((observer: Observer<Threat[]>) => {
-            observer.next(listOfThreats)
+            observer.next(this.threatsMocks)
         } )
     }
 }
