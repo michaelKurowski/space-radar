@@ -1,12 +1,15 @@
 import Visibility from './visibility.enum';
+import { Moment } from 'moment';
 
 class Threat {
-    private dateMin: Date
-    private dateMax: Date
+    private dateMin: Moment
+    private dateMax: Moment
+    private name: string
 
-    constructor( dateMin: Date, dateMax: Date, private visibility: Visibility) {
+    constructor(name: string ,dateMin: Moment, dateMax: Moment, private visibility: Visibility) {
         this.dateMin = dateMin
         this.dateMax = dateMax
+        this.name = name
     }
 
     getVisibility() {
@@ -19,6 +22,10 @@ class Threat {
 
     getDateMax() {
         return this.dateMax
+    }
+
+    getName() {
+        return this.name
     }
 }
 

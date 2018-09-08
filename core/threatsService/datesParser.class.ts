@@ -15,7 +15,8 @@ class DatesParser {
     }
 
     static parseApproachDate(date: string) {
-        return moment.utc(date)
+        const dateWithSpaces = date.replace(/-/g, ' ')
+        return moment.utc(dateWithSpaces)
     }
 
     private static isSigmaNeglectible(sigma: string) {

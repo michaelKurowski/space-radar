@@ -9,8 +9,8 @@
     <tbody data-selenium='threats-viewer-list'>
         <tr ng-repeat='thr in $ctrl.threats'>
             <th scope='row'>{{$index}}</th>
-            <td>Some object</td>
-            <td>Maybe today, maybe never</td>
+            <td>{{thr.getName()}}</td>
+            <td>{{thr.getDateMin().local().format('YYYY-MM-DD HH:mm:ss')}} - {{thr.getDateMax().local().format('YYYY-MM-DD HH:mm:ss')}}</td>
             <td>
                 <i ng-if='thr.getVisibility() === 3' class='fas fa-astronaut text-danger' title='Heavy Aparature'></i>
                 <i ng-if='thr.getVisibility() === 2' class='fas fa-wpexplorer text-warning' title='Amateur Telescope'></i>

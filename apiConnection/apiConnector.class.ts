@@ -1,6 +1,6 @@
 
 import QueryOptions from './queryOptions.interface'
-import QueryOptionsToParametersMap from './queryOptionsToParameters.map'
+import QueryOptionsToParametersMap from './QueryOptionsToParameters.map'
 import {map, zip ,forOwn, forEach} from 'lodash'
 import Parameter from './Parameter.class'
 import ResponseParameters from './responseParameters.interface'
