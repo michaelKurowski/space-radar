@@ -4,7 +4,7 @@
         <th scope='col'>#</th>
         <th scope='col'>Name</th>
         <th scope='col'>When will hit</th>
-        <th scope='col'>Status</th>
+        <th scope='col'>Visibility</th>
     </thead>
     <tbody data-selenium='threats-viewer-list'>
         <tr ng-repeat='thr in $ctrl.threats'>
@@ -12,10 +12,10 @@
             <td>Some object</td>
             <td>Maybe today, maybe never</td>
             <td>
-                <i ng-if='thr.getDangerLevel() === 0' class='fas fa-skull text-danger' title='Severe'></i>
-                <i ng-if='thr.getDangerLevel() === 1' class='fas fa-sad-tear text-warning' title='Serious'></i>
-                <i ng-if='thr.getDangerLevel() === 2' class='fas fa-frown-open text-dark' title='Mild'></i>
-                <i ng-if='thr.getDangerLevel() === 3' class='fas fa-feather-alt text-info' title='Light'></i>
+                <i ng-if='thr.getVisibility() === 3' class='fas fa-astronaut text-danger' title='Heavy Aparature'></i>
+                <i ng-if='thr.getVisibility() === 2' class='fas fa-wpexplorer text-warning' title='Amateur Telescope'></i>
+                <i ng-if='thr.getVisibility() === 1' class='fas fa-binoculars text-dark' title='Binoculars'></i>
+                <i ng-if='thr.getVisibility() === 0' class='fas fa-eye text-info' title='Naked eye'></i>
             </td>
         </tr>
     </tbody>
