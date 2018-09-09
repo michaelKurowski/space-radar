@@ -1,5 +1,5 @@
 # About
-Mini project to play with some things.
+Mini project that serves as playground for TypeScript features.
 
 Finds potential danmgerous celestial objects that may hit Earth via NASA API.
 # Starting dev mode
