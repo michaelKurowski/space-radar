@@ -1,9 +1,6 @@
 <form ng-submit='$ctrl.submit()'>
     <div class='form-group'>
-        <label for='danger-level'>Minimum impact results:</label>
-        <select id='danger-level' class='form-control' ng-model='dangerLevel' data-selenium='options-setter-danger-level'>
-            <option ng-repeat='level in $ctrl.dangerLevels' value='{{level}}'>{{level}}</option>
-        </select>
+
         <label for='days-to-hit'>Hit within days:</label>
         <input id='days-to-hit' class='form-control' ng-model='daysToHit' value='30' data-selenium='options-setter-days-to-hit'/>
         <button class='btn btn-primary text-white m-2' data-selenium='options-setter-submit'>Get results</button>

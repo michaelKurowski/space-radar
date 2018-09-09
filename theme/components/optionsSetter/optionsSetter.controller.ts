@@ -28,8 +28,7 @@ class OptionsSetter {
     }
 
     submit() {
-        console.log(this.$scope, this)
-        this.submitCallback(this.$scope.dangerLevel, parseInt(this.$scope.daysToHit))
+        this.submitCallback(parseInt(this.$scope.daysToHit))
     }
 }
 

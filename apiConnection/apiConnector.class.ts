@@ -26,7 +26,6 @@ class ApiConnector {
             const parameterName = QueryOptionsToParametersMap.get(key as keyof QueryOptions)!
             convertedParameters.push(Parameter.Builder(parameterName, value))
         })
-
         return convertedParameters
     }
 
@@ -36,9 +35,7 @@ class ApiConnector {
     }
 
     private async fetchResponse(parameters: String) {
-        console.log(parameters)
         const buildedUrl = this.BASE_API_URL + '?' + parameters + this.QUERY_SEPARATOR +this.serializedPresetParameters
-        console.log(buildedUrl)
         const responseArray = await fetch(buildedUrl)
         return await responseArray.json()
     }

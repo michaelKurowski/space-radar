@@ -3,20 +3,13 @@
     <thead class='thead-dark '>
         <th scope='col'>#</th>
         <th scope='col'>Name</th>
-        <th scope='col'>When will hit</th>
-        <th scope='col'>Visibility</th>
+        <th scope='col'>Time of close approach</th>
     </thead>
     <tbody data-selenium='threats-viewer-list'>
         <tr ng-repeat='thr in $ctrl.threats'>
             <th scope='row'>{{$index}}</th>
             <td>{{thr.getName()}}</td>
-            <td>{{thr.getDateMin().local().format('YYYY-MM-DD HH:mm:ss')}} - {{thr.getDateMax().local().format('YYYY-MM-DD HH:mm:ss')}}</td>
-            <td>
-                <i ng-if='thr.getVisibility() === 3' class='fas fa-astronaut text-danger' title='Heavy Aparature'></i>
-                <i ng-if='thr.getVisibility() === 2' class='fas fa-wpexplorer text-warning' title='Amateur Telescope'></i>
-                <i ng-if='thr.getVisibility() === 1' class='fas fa-binoculars text-dark' title='Binoculars'></i>
-                <i ng-if='thr.getVisibility() === 0' class='fas fa-eye text-info' title='Naked eye'></i>
-            </td>
+            <td>{{thr.getDate().local().format('YYYY-MM-DD HH:mm:ss')}} ± {{thr.getDateSigma().locale('en').humanize()}}</td>
         </tr>
     </tbody>
 

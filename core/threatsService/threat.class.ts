@@ -1,27 +1,24 @@
 import Visibility from './visibility.enum';
-import { Moment } from 'moment';
+import { Moment, Duration } from 'moment';
 
 class Threat {
-    private dateMin: Moment
-    private dateMax: Moment
-    private name: string
-
-    constructor(name: string ,dateMin: Moment, dateMax: Moment, private visibility: Visibility) {
-        this.dateMin = dateMin
-        this.dateMax = dateMax
-        this.name = name
-    }
+    constructor(
+        private name: string,
+        private date: Moment,
+        private dateSigma: Duration,
+        private visibility: Visibility
+    ) {}
 
     getVisibility() {
         return this.visibility
     }
 
-    getDateMin() {
-        return this.dateMin
+    getDate() {
+        return this.date
     }
 
-    getDateMax() {
-        return this.dateMax
+    getDateSigma() {
+        return this.dateSigma
     }
 
     getName() {

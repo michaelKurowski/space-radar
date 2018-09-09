@@ -18,17 +18,15 @@ class ThreatsService {
 
     private async prepareResponse(responseParameters: ResponseParameters[]): Promise<Threat[]> {
         let threats: Threat[] = []
-        console.log(responseParameters)
+
         responseParameters.forEach( object => {
             const distanceInParsecs = PhysicsUtils.convertAUtoParsecs(parseFloat(object.dist as string) as astronomicalUnits)
             const apparentMagnitude = PhysicsUtils.calculateApparentMagnitude(parseFloat(object.h as string), distanceInParsecs)
             const visibilityLevel = PhysicsUtils.getVisibilityLevel(apparentMagnitude)
             const date = DatesParser.parseApproachDate(object.cd as string)
             const dateSigma = DatesParser.parseTimeSigma(object.t_sigma_f as string)
-            const dateMin = moment(date).subtract(dateSigma.valueOf(),'milliseconds')
-            const dateMax = moment(date).add(dateSigma.valueOf(), 'milliseconds')
             const objectName = object.des as string
-            const threat = new Threat(objectName, dateMin, dateMax, visibilityLevel)
+            const threat = new Threat(objectName, date, dateSigma, visibilityLevel)
             threats.push(threat)
         })
         return threats

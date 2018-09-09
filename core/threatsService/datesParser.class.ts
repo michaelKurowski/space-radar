@@ -7,11 +7,16 @@ const UNIX_ZERO_TIME = 0
 const DAYS_INDEX = 0
 class DatesParser {
     static parseTimeSigma(sigma: string) {
-        if (DatesParser.isSigmaNeglectible(sigma)) return moment(UNIX_ZERO_TIME)
+        if (DatesParser.isSigmaNeglectible(sigma)) return moment.duration(0)
         const daysAmount = DatesParser.howManyDaysInSigma(sigma)
         const hours = DatesParser.getHoursFromSigma(sigma)
         const minutes = DatesParser.getMinutesFromSigma(sigma)
-        return moment(UNIX_ZERO_TIME).add(daysAmount, 'days').add(hours, 'hours').add(minutes, 'minutes')
+        const milisecondsTotal = moment(UNIX_ZERO_TIME)
+            .add(daysAmount, 'days')
+            .add(hours, 'hours')
+            .add(minutes, 'minutes')
+            .valueOf()
+        return moment.duration(milisecondsTotal)
     }
 
     static parseApproachDate(date: string) {

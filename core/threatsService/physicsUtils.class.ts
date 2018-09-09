@@ -2,8 +2,13 @@ import * as units from './units.interface'
 import Visibility from './visibility.enum'
 class PhysicsUtils {
     static calculateApparentMagnitude(absoluteMagnitude: number, distance: units.parsecs) {
-        const logPart = Math.log(distance) / Math.LN10
-        return absoluteMagnitude - 5 * (1 - logPart)
+        const distanceBetweenObserverAndSun = 4.84813681 * 10 ** -6
+        const objectFlux = absoluteMagnitude / (4 * Math.PI * distance ** 2)
+        const vegaFlux = 37 / (4 * Math.PI * 25.3 ** 2)
+        const logPart = Math.log10(objectFlux / vegaFlux)   
+         //const logPart = Math.log10((3/2) * distance**2)
+        //const logPart = Math.log10((distance **2 * distanceBetweenObserverAndSun **2) / (2/3) * distanceBetweenObserverAndSun ** 4)
+        return - 2.5 * logPart
     }
 
     static convertAUtoParsecs(astronomicalUnits: units.astronomicalUnits) : units.parsecs {
