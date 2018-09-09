@@ -3,37 +3,51 @@ import Threat from './threat.class'
 import {Observable, Observer} from 'rxjs'
 import ApiConnector from '../../apiConnection/apiConnector.class'
 import moment from 'moment'
+import DangerLevels from './dangerLevels.enum'
+import PhysicsUtils from './physicsUtils.class'
+import ResponseParameters from '../../apiConnection/responseParameters.interface'
+import DatesParser from './datesParser.class'
+import {astronomicalUnits} from './units.interface'
 class ThreatsService {
     private DATE_FORMAT:string = 'YYYY-MM-DD'
     private apiConnector: ApiConnector
-    private threatsMocks = [
-        new Threat(new Date(), new Date(), 3),
-        new Threat(new Date(), new Date(), 1),
-        new Threat(new Date(), new Date(), 0),
-        new Threat(new Date(), new Date(), 1),
-        new Threat(new Date(), new Date(), 3),
-        new Threat(new Date(), new Date(), 1),
-        new Threat(new Date(), new Date(), 0),
-    ]
 
     constructor() {
         this.apiConnector = new ApiConnector()
     }
 
+    private async prepareResponse(responseParameters: ResponseParameters[]): Promise<Threat[]> {
+        let threats: Threat[] = []
+        console.log(responseParameters)
+        responseParameters.forEach( object => {
+            const distanceInParsecs = PhysicsUtils.convertAUtoParsecs(parseFloat(object.dist as string) as astronomicalUnits)
+            const apparentMagnitude = PhysicsUtils.calculateApparentMagnitude(parseFloat(object.h as string), distanceInParsecs)
+            const visibilityLevel = PhysicsUtils.getVisibilityLevel(apparentMagnitude)
+            const date = DatesParser.parseApproachDate(object.cd as string)
+            const dateSigma = DatesParser.parseTimeSigma(object.t_sigma_f as string)
+            const dateMin = moment(date).subtract(dateSigma.valueOf(),'milliseconds')
+            const dateMax = moment(date).add(dateSigma.valueOf(), 'milliseconds')
+            const objectName = object.des as string
+            const threat = new Threat(objectName, dateMin, dateMax, visibilityLevel)
+            threats.push(threat)
+        })
+        return threats
+    }
 
-    getThreats(days:number): Observable<Threat[]> {
+    getThreats(days:number,body:string, dangerLevel:DangerLevels): Observable<Threat[]> {
         const dateFrom = moment().format(this.DATE_FORMAT) 
         const dateTo = moment().add(days,'days').format(this.DATE_FORMAT)
         const queryOptions: QueryOptions = {
             dateFrom,
-            dateTo
+            dateTo,
+            body
         }
+        
 
-        const receivedThreats = this.apiConnector.getThreats(queryOptions)
-
-        const listOfThreats:Threat[] = []
-        return Observable.create((observer: Observer<Threat[]>) => {
-            observer.next(this.threatsMocks)
+        return Observable.create(async (observer: Observer<Threat[]>) => {
+           const response = await this.apiConnector.getResponse(queryOptions)
+           const convertedResponse = await this.prepareResponse(response)
+           observer.next(convertedResponse)
         } )
     }
 }
